@@ -6,6 +6,7 @@ import {
   FlaskConical,
   Globe,
   Landmark,
+  Monitor,
 } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
@@ -15,6 +16,7 @@ const pelajaranSD = [
   { nama: 'IPA', icon: FlaskConical, color: 'bg-green-100 text-green-600' },
   { nama: 'IPS', icon: Landmark, color: 'bg-amber-100 text-amber-600' },
   { nama: 'Bahasa Inggris', icon: Globe, color: 'bg-purple-100 text-purple-600' },
+  { nama: 'Komputer Dasar', icon: Monitor, color: 'bg-teal-100 text-teal-600' },
 ]
 
 const pelajaranSMP = [
@@ -23,6 +25,7 @@ const pelajaranSMP = [
   { nama: 'IPS', icon: Landmark, color: 'bg-amber-100 text-amber-600' },
   { nama: 'Bahasa Indonesia', icon: BookOpen, color: 'bg-red-100 text-red-600' },
   { nama: 'Bahasa Inggris', icon: Globe, color: 'bg-purple-100 text-purple-600' },
+  { nama: 'Komputer Dasar', icon: Monitor, color: 'bg-teal-100 text-teal-600' },
 ]
 
 export function MapelSection() {

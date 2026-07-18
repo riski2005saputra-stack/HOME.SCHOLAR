@@ -3,34 +3,39 @@
 import { Check, Star } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6281234567890?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20tertarik%20dengan%20paket%20les%20privat.'
+const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20tertarik%20dengan%20paket%20les%20privat.'
 
 const paketList = [
   {
     nama: 'Paket Basic',
-    target: 'Untuk SD',
-    harga: 'Hubungi Admin',
+    target: 'Untuk SD & SMP',
+    harga: 'Mulai 80K / Sesi',
     populer: false,
     fitur: [
-      '90 menit per sesi',
-      '1 Mata Pelajaran',
-      'Guru datang ke rumah',
-      'Jadwal fleksibel',
+      '1x Pertemuan',
+      '90 Menit per Sesi',
+      'Guru Datang ke Rumah',
+      'Jadwal Fleksibel',
+      'Harga SD: Rp 80.000 / Sesi',
+      'Harga SMP: Rp 90.000 / Sesi',
     ],
     btnText: 'Pilih Paket',
     btnClass: 'bg-blue-600 hover:bg-blue-700 text-white',
   },
   {
     nama: 'Paket Reguler',
-    target: 'Untuk SD dan SMP',
-    harga: 'Hubungi Admin',
+    target: 'Untuk SD & SMP',
+    harga: 'Mulai 600K',
     populer: true,
     fitur: [
-      '120 menit per sesi',
+      '120 Menit per Sesi',
       '2 Mata Pelajaran',
-      'Guru datang ke rumah',
+      'Guru Datang ke Rumah',
       'Konsultasi PR',
-      'Jadwal fleksibel',
+      'Jadwal Fleksibel',
+      '8x Pertemuan: SD 600K | SMP 680K',
+      '12x Pertemuan: SD 900K | SMP 1.020K',
+      '16x Pertemuan: SD 1.200K | SMP 1.360K',
     ],
     btnText: 'Pilih Paket',
     btnClass: 'bg-blue-600 hover:bg-blue-700 text-white',
@@ -49,14 +54,18 @@ const paketList = [
       'Home Schooling',
       'Belajar Membaca',
       'Belajar Berhitung',
-      'Program Naik Peringkat',
+      'Belajar Mengaji',
     ],
     btnText: 'Konsultasi Paket',
     btnClass: 'bg-amber-400 hover:bg-amber-500 text-gray-900',
   },
 ]
 
-export function PaketLesSection() {
+interface PaketLesSectionProps {
+  onOpenBooking: (paketName: string) => void
+}
+
+export function PaketLesSection({ onOpenBooking }: PaketLesSectionProps) {
   return (
     <section id="paket" className="py-20 md:py-28 bg-gradient-to-b from-white to-blue-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,28 +101,57 @@ export function PaketLesSection() {
 
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-1">{paket.nama}</h3>
-                  <p className="text-sm text-blue-600 font-medium">{paket.target}</p>
+                  <p className="text-sm text-blue-600 font-medium mb-1">{paket.target}</p>
+                  <span className="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full border border-blue-100/60 mt-1">
+                    {paket.harga}
+                  </span>
                 </div>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  {paket.fitur.map((fitur) => (
-                    <li key={fitur} className="flex items-start gap-3">
-                      <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-0.5 shrink-0">
-                        <Check className="w-3 h-3 text-blue-600" />
-                      </div>
-                      <span className="text-sm text-gray-600">{fitur}</span>
-                    </li>
-                  ))}
+                <ul className="space-y-2.5 mb-8 flex-1">
+                  {paket.fitur.map((fitur) => {
+                    const isPriceItem =
+                      fitur.includes('|') ||
+                      fitur.includes('/ Sesi') ||
+                      fitur.toLowerCase().startsWith('harga') ||
+                      fitur.includes('x Pertemuan:')
+                    return (
+                      <li
+                        key={fitur}
+                        className={`flex items-start gap-2.5 ${
+                          isPriceItem
+                            ? 'bg-blue-50/70 border border-blue-100/80 rounded-xl p-2.5 my-1 shadow-2xs'
+                            : ''
+                        }`}
+                      >
+                        <div
+                          className={`w-5 h-5 ${
+                            isPriceItem
+                              ? 'bg-blue-600 text-white font-bold text-[10px]'
+                              : 'bg-blue-100 text-blue-600'
+                          } rounded-full flex items-center justify-center mt-0.5 shrink-0`}
+                        >
+                          {isPriceItem ? 'Rp' : <Check className="w-3 h-3" />}
+                        </div>
+                        <span
+                          className={`text-sm ${
+                            isPriceItem
+                              ? 'font-semibold text-blue-950'
+                              : 'text-gray-600'
+                          }`}
+                        >
+                          {fitur}
+                        </span>
+                      </li>
+                    )
+                  })}
                 </ul>
 
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block text-center ${paket.btnClass} px-6 py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 hover:shadow-lg`}
+                <button
+                  onClick={() => onOpenBooking(paket.nama)}
+                  className={`block w-full text-center ${paket.btnClass} px-6 py-3.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 hover:shadow-lg cursor-pointer`}
                 >
                   {paket.btnText}
-                </a>
+                </button>
               </div>
             </FadeIn>
           ))}

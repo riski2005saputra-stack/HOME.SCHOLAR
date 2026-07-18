@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6281234567890?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
+const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
 
 export function HeroSection() {
   const scrollToPaket = () => {
@@ -125,7 +125,7 @@ export function HeroSection() {
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                 className="absolute -top-2 -right-2 sm:top-4 sm:-right-4 bg-white rounded-2xl shadow-lg p-4"
               >
-                <p className="text-2xl font-extrabold text-blue-600">500+</p>
+                <p className="text-2xl font-extrabold text-blue-600">20+</p>
                 <p className="text-xs text-gray-500">Siswa Aktif</p>
               </motion.div>
             </div>

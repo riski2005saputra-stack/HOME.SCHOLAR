@@ -4,9 +4,9 @@ import { GraduationCap, Users, MapPin, Award } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
 const stats = [
-  { icon: Users, value: '500+', label: 'Siswa Aktif', color: 'text-blue-600' },
-  { icon: GraduationCap, value: '50+', label: 'Guru Profesional', color: 'text-amber-600' },
-  { icon: Award, value: '5+', label: 'Tahun Pengalaman', color: 'text-green-600' },
+  { icon: Users, value: '10+', label: 'Siswa Aktif', color: 'text-blue-600' },
+  { icon: GraduationCap, value: '6', label: 'Guru Profesional', color: 'text-amber-600' },
+  { icon: Award, value: '3+', label: 'Tahun Pengalaman', color: 'text-green-600' },
   { icon: MapPin, value: 'Pekanbaru', label: 'Area Layanan', color: 'text-purple-600' },
 ]
 

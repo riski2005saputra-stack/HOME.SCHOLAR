@@ -1,8 +1,8 @@
 'use client'
 
-import { GraduationCap } from 'lucide-react'
+import Image from 'next/image'
 
-const WHATSAPP_URL = 'https://wa.me/6281234567890?text=Halo%20Admin%20HOME%20SCHOLAR'
+const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR'
 
 const quickLinks = [
   { label: 'Dashboard', href: '#dashboard' },
@@ -29,9 +29,15 @@ export function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#dashboard" onClick={(e) => { e.preventDefault(); handleClick('#dashboard') }} className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-5 h-5 text-white" />
+            <a href="#dashboard" onClick={(e) => { e.preventDefault(); handleClick('#dashboard') }} className="flex items-center gap-2.5 mb-4">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden bg-white p-0.5 shadow-xs">
+                <Image
+                  src="/logo.png"
+                  alt="HOME SCHOLAR Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-lg font-bold text-white">
                 HOME <span className="text-blue-400">SCHOLAR</span>
@@ -77,10 +83,14 @@ export function Footer() {
               <li>Pekanbaru, Riau</li>
               <li>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
-                  +62 812-3456-7890
+                  +62 859-2332-0768
                 </a>
               </li>
-              <li>info@homescholar.id</li>
+              <li>
+                <a href="mailto:riski2005saputra@gmail.com" className="hover:text-amber-400 transition-colors">
+                  riski2005saputra@gmail.com
+                </a>
+              </li>
               <li>Senin – Sabtu</li>
               <li>08.00 – 20.00 WIB</li>
             </ul>

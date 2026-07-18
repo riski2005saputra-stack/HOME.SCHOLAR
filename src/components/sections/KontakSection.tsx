@@ -3,7 +3,7 @@
 import { MapPin, Clock, Mail, Phone } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6281234567890?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya.'
+const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya.'
 
 export function KontakSection() {
   return (
@@ -45,19 +45,22 @@ export function KontakSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">WhatsApp</h3>
-                  <p className="text-sm text-gray-500 group-hover:text-green-600 transition-colors">+62 812-3456-7890</p>
+                  <p className="text-sm text-gray-500 group-hover:text-green-600 transition-colors">+62 859-2332-0768</p>
                 </div>
               </a>
 
-              <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+              <a
+                href="mailto:riski2005saputra@gmail.com"
+                className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-amber-200 transition-all group"
+              >
                 <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5 text-amber-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                  <p className="text-sm text-gray-500">info@homescholar.id</p>
+                  <p className="text-sm text-gray-500 group-hover:text-amber-600 transition-colors">riski2005saputra@gmail.com</p>
                 </div>
-              </div>
+              </a>
 
               <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center shrink-0">
@@ -72,19 +75,28 @@ export function KontakSection() {
             </div>
           </FadeIn>
 
-          {/* Map Placeholder */}
+          {/* Map Embed */}
           <FadeIn delay={0.2}>
-            <div className="bg-gray-100 rounded-2xl overflow-hidden h-full min-h-[360px] flex items-center justify-center border border-gray-200 relative">
-              <div className="text-center p-8">
-                <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-                <p className="text-gray-500 font-medium mb-1">Pekanbaru, Riau</p>
-                <p className="text-sm text-gray-400">Google Maps</p>
-                <div className="mt-4 grid grid-cols-3 gap-1 max-w-[200px] mx-auto">
-                  {Array.from({ length: 9 }).map((_, i) => (
-                    <div key={i} className="w-full aspect-square bg-gray-200 rounded-sm" />
-                  ))}
-                </div>
-              </div>
+            <div className="rounded-2xl overflow-hidden h-full min-h-[360px] border border-gray-200 shadow-sm relative flex flex-col">
+              <iframe
+                title="Peta Wilayah Pekanbaru, Riau"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=101.2748%2C0.3484%2C101.6208%2C0.6659&layer=mapnik&marker=0.5071%2C101.4478"
+                width="100%"
+                height="100%"
+                className="flex-1 min-h-[300px]"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+              />
+              <a
+                href="https://www.google.com/maps/place/Pekanbaru,+Riau/@0.5071,101.4478,13z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-blue-50 border-t border-gray-200 text-sm text-blue-600 font-medium transition-colors"
+              >
+                <MapPin className="w-4 h-4" />
+                Buka di Google Maps
+              </a>
             </div>
           </FadeIn>
         </div>

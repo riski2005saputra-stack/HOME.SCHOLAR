@@ -1,53 +1,54 @@
 'use client'
 
 import { FadeIn } from '@/components/FadeIn'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { CheckCircle } from 'lucide-react'
 
 const guruList = [
   {
-    nama: 'Bu Sari Dewi',
-    bidang: 'Matematika',
-    pengalaman: '5 Tahun Pengalaman',
+    nama: 'Riski Saputra, A.Md.T',
+    bidang: 'Komputer Dasar (SD & SMP)',
+    pengalaman: '3 Tahun Pengalaman',
     bintang: 5,
-    inisial: 'SD',
+    inisial: 'RS',
     color: 'bg-blue-100 text-blue-600',
+    foto: '/riski.jpg',
   },
   {
-    nama: 'Pak Ahmad Rizki',
-    bidang: 'IPA',
-    pengalaman: '7 Tahun Pengalaman',
+    nama: 'Riska, S.Pd',
+    bidang: 'Semua Mata Pelajaran (SD & SMP)',
+    pengalaman: '6 Tahun Pengalaman',
     bintang: 5,
-    inisial: 'AR',
+    inisial: 'RS',
     color: 'bg-green-100 text-green-600',
   },
   {
-    nama: 'Bu Rina Fitriani',
-    bidang: 'Bahasa Indonesia',
+    nama: 'Nadia Armanda, S.Pd',
+    bidang: 'Semua Mata Pelajaran (SD & SMP)',
     pengalaman: '4 Tahun Pengalaman',
     bintang: 5,
-    inisial: 'RF',
+    inisial: 'NA',
     color: 'bg-amber-100 text-amber-600',
   },
   {
-    nama: 'Pak Dedi Saputra',
-    bidang: 'Bahasa Inggris',
+    nama: 'Widia, S.Pd',
+    bidang: 'Semua Mata Pelajaran (SD & SMP)',
     pengalaman: '6 Tahun Pengalaman',
     bintang: 5,
-    inisial: 'DS',
+    inisial: 'WD',
     color: 'bg-purple-100 text-purple-600',
   },
   {
-    nama: 'Bu Nisa Amelia',
-    bidang: 'IPS',
+    nama: 'Nisa Amelia, S.Pd',
+    bidang: 'Semua Mata Pelajaran (SD & SMP)',
     pengalaman: '3 Tahun Pengalaman',
     bintang: 5,
     inisial: 'NA',
     color: 'bg-pink-100 text-pink-600',
   },
   {
-    nama: 'Pak Fajar Hidayat',
-    bidang: 'Matematika & IPA',
+    nama: 'Fajar Hidayat, S.Pd',
+    bidang: 'Semua Mata Pelajaran (SD & SMP)',
     pengalaman: '8 Tahun Pengalaman',
     bintang: 5,
     inisial: 'FH',
@@ -74,7 +75,10 @@ export function PengajarSection() {
           {guruList.map((guru, i) => (
             <FadeIn key={guru.nama} delay={i * 0.1}>
               <div className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-600/5 hover:-translate-y-1 transition-all duration-300 text-center">
-                <Avatar className="w-20 h-20 mx-auto mb-4">
+                <Avatar className="w-20 h-20 mx-auto mb-4 border-2 border-blue-600/20 shadow-md">
+                  {guru.foto && (
+                    <AvatarImage src={guru.foto} alt={guru.nama} className="object-cover" />
+                  )}
                   <AvatarFallback className={`${guru.color} text-2xl font-bold`}>
                     {guru.inisial}
                   </AvatarFallback>

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "HOME SCHOLAR" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/logo.png",
   },
   openGraph: {
     title: "HOME SCHOLAR - Les Privat ke Rumah",
