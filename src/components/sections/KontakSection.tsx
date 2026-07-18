@@ -3,7 +3,7 @@
 import { MapPin, Clock, Mail, Phone } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya.'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya.'
 
 export function KontakSection() {
   return (
@@ -45,7 +45,7 @@ export function KontakSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">WhatsApp</h3>
-                  <p className="text-sm text-gray-500 group-hover:text-green-600 transition-colors">+62 859-2332-0768</p>
+                  <p className="text-sm text-gray-500 group-hover:text-green-600 transition-colors">+62 821-7335-4073</p>
                 </div>
               </a>
 

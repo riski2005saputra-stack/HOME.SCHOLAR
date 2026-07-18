@@ -3,7 +3,7 @@
 import { Check, Star } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20tertarik%20dengan%20paket%20les%20privat.'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20tertarik%20dengan%20paket%20les%20privat.'
 
 const paketList = [
   {

@@ -41,7 +41,7 @@ interface BookingModalProps {
   initialPaket?: string
 }
 
-const WHATSAPP_NUMBER = '6285923320768'
+const WHATSAPP_NUMBER = '6282173354073'
 
 export function BookingModal({ isOpen, onClose, initialPaket = '' }: BookingModalProps) {
   const [formData, setFormData] = useState({

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-const WHATSAPP_URL = 'https://wa.me/6285923320768?text=Halo%20Admin%20HOME%20SCHOLAR'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR'
 
 const quickLinks = [
   { label: 'Dashboard', href: '#dashboard' },
@@ -83,7 +83,7 @@ export function Footer() {
               <li>Pekanbaru, Riau</li>
               <li>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
-                  +62 859-2332-0768
+                  +62 821-7335-4073
                 </a>
               </li>
               <li>
