@@ -31,8 +31,8 @@ export default function Home() {
         <HeroSection />
         <KeunggulanSection />
         <PaketLesSection onOpenBooking={handleOpenBooking} />
-        <PengajarSection />
         <MapelSection />
+        <PengajarSection />
         <CaraPemesananSection />
         <TestimoniSection />
         <FAQSection />

@@ -7,8 +7,8 @@ const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCH
 const quickLinks = [
   { label: 'Dashboard', href: '#dashboard' },
   { label: 'Paket Les', href: '#paket' },
-  { label: 'Pengajar', href: '#pengajar' },
   { label: 'Mata Pelajaran', href: '#mapel' },
+  { label: 'Pengajar', href: '#pengajar' },
   { label: 'Cara Pemesanan', href: '#pemesanan' },
   { label: 'Testimoni', href: '#testimoni' },
   { label: 'FAQ', href: '#faq' },
