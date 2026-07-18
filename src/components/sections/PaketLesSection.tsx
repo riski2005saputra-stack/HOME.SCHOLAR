@@ -33,9 +33,9 @@ const paketList = [
       'Guru Datang ke Rumah',
       'Konsultasi PR',
       'Jadwal Fleksibel',
-      'Harga 8x Pertemuan: SD: Rp 600.000 | SMP: Rp 680.000',
-      'Harga 12x Pertemuan: SD: Rp 900.000 | SMP: Rp 1.020.000',
-      'Harga 16x Pertemuan: SD: Rp 1.200.000 | SMP: Rp 1.360.000',
+      'Harga 8x Pertemuan:\n• SD: Rp 600.000\n• SMP: Rp 680.000',
+      'Harga 12x Pertemuan:\n• SD: Rp 900.000\n• SMP: Rp 1.020.000',
+      'Harga 16x Pertemuan:\n• SD: Rp 1.200.000\n• SMP: Rp 1.360.000',
     ],
     btnText: 'Pilih Paket',
     btnClass: 'bg-blue-600 hover:bg-blue-700 text-white',
@@ -135,7 +135,7 @@ export function PaketLesSection({ onOpenBooking }: PaketLesSectionProps) {
                         <span
                           className={`text-sm ${
                             isPriceItem
-                              ? 'font-semibold text-blue-950'
+                              ? 'font-semibold text-blue-950 whitespace-pre-line leading-relaxed'
                               : 'text-gray-600'
                           }`}
                         >
