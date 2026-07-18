@@ -28,7 +28,7 @@ const paketList = [
     harga: 'Mulai 600K',
     populer: true,
     fitur: [
-      '120 Menit per Sesi',
+      '90 Menit per Sesi',
       '2 Mata Pelajaran',
       'Guru Datang ke Rumah',
       'Konsultasi PR',
