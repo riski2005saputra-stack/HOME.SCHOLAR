@@ -5,7 +5,6 @@ import { Eye } from 'lucide-react'
 
 export function VisitorCounter() {
   const [count, setCount] = useState<number>(0)
-  const [monthName, setMonthName] = useState<string>('')
 
   useEffect(() => {
     let isMounted = true
@@ -19,9 +18,6 @@ export function VisitorCounter() {
         if (!isMounted) return
         if (typeof data?.count === 'number') {
           setCount(data.count)
-        }
-        if (data?.monthName) {
-          setMonthName(data.monthName)
         }
       })
       .catch(() => {
@@ -44,10 +40,10 @@ export function VisitorCounter() {
       </span>
       <Eye className="w-3.5 h-3.5 text-blue-400 shrink-0" />
       <span className="whitespace-nowrap">
-        <strong className="text-amber-300 font-bold text-xs">{count}</strong> Pengunjung Bulan {monthName || 'Ini'}
+        <strong className="text-amber-300 font-bold text-xs">{count}</strong> Pengunjung Minggu Ini
       </span>
       <span className="text-[10px] text-gray-400 border-l border-gray-700 pl-2 hidden sm:inline whitespace-nowrap">
-        Diperbarui Real-time
+        Reset 1 Minggu Sekali
       </span>
     </div>
   )

@@ -1,28 +1,32 @@
 import { NextResponse } from 'next/server'
 
-// Serverless in-memory store for unique IP + Device tracking per month
+// Serverless store for unique IP + Device tracking per week
 const visitorStore: {
-  monthKey: string
+  weekKey: string
   visitors: Set<string>
   count: number
 } = {
-  monthKey: '',
+  weekKey: '',
   visitors: new Set<string>(),
   count: 0
 }
 
-const MONTH_NAMES = [
-  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-]
+function getWeekKey(date: Date): string {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+  const dayNum = d.getUTCDay() || 7
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum)
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1))
+  const weekNo = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7)
+  return `${d.getUTCFullYear()}_W${weekNo}`
+}
 
 export async function GET(request: Request) {
   const now = new Date()
-  const currentMonthKey = `${now.getFullYear()}_${String(now.getMonth() + 1).padStart(2, '0')}`
+  const currentWeekKey = getWeekKey(now)
 
-  // Automatically reset count when month changes
-  if (visitorStore.monthKey !== currentMonthKey) {
-    visitorStore.monthKey = currentMonthKey
+  // Automatically reset count when a new week begins
+  if (visitorStore.weekKey !== currentWeekKey) {
+    visitorStore.weekKey = currentWeekKey
     visitorStore.visitors = new Set<string>()
     visitorStore.count = 0
   }
@@ -40,9 +44,9 @@ export async function GET(request: Request) {
     visitorStore.count += 1
   }
 
-  // Also hit public global counter for persistent fallback
+  // Hit external global counter for persistent weekly fallback
   try {
-    const extRes = await fetch(`https://api.counterapi.dev/v1/bimbel_bina_juara_net/v_${currentMonthKey}/up`, {
+    const extRes = await fetch(`https://api.counterapi.dev/v1/bimbel_bina_juara_net/week_${currentWeekKey}/up`, {
       cache: 'no-store'
     })
     if (extRes.ok) {
@@ -52,16 +56,15 @@ export async function GET(request: Request) {
       }
     }
   } catch {
-    // Keep internal network IP count if external call fails
+    // Fallback to in-memory network count
   }
 
-  const monthName = MONTH_NAMES[now.getMonth()]
   const finalCount = Math.max(1, visitorStore.count)
 
   return NextResponse.json(
     {
       count: finalCount,
-      monthName,
+      periodLabel: 'Minggu Ini',
       ip
     },
     {
