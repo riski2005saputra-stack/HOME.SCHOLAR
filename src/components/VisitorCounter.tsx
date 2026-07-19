@@ -9,7 +9,22 @@ export function VisitorCounter() {
   useEffect(() => {
     let isMounted = true
 
-    fetch('/api/visitor', { cache: 'no-store' })
+    // Check device-level lock for the current week
+    const now = new Date()
+    const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()))
+    const dayNum = d.getUTCDay() || 7
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum)
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1))
+    const weekNo = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7)
+    const weekKey = `${d.getUTCFullYear()}_W${weekNo}`
+
+    const storageKey = `bj_visitor_counted_${weekKey}`
+    const isAlreadyCounted = typeof window !== 'undefined' && !!localStorage.getItem(storageKey)
+
+    // Send inc=1 ONLY if this device has NOT been counted this week
+    const url = isAlreadyCounted ? '/api/visitor?inc=0' : '/api/visitor?inc=1'
+
+    fetch(url, { cache: 'no-store' })
       .then((res) => {
         if (!res.ok) throw new Error('Network response error')
         return res.json()
@@ -18,6 +33,10 @@ export function VisitorCounter() {
         if (!isMounted) return
         if (typeof data?.count === 'number') {
           setCount(data.count)
+          // Lock device so refreshing page does NOT increment counter
+          if (!isAlreadyCounted && typeof window !== 'undefined') {
+            localStorage.setItem(storageKey, 'true')
+          }
         }
       })
       .catch(() => {

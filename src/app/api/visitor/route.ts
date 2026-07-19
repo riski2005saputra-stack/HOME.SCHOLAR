@@ -21,6 +21,9 @@ function getWeekKey(date: Date): string {
 }
 
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url)
+  const isIncrementRequested = searchParams.get('inc') === '1'
+
   const now = new Date()
   const currentWeekKey = getWeekKey(now)
 
@@ -39,24 +42,28 @@ export async function GET(request: Request) {
   // Unique Network + Device Identifier
   const uniqueVisitorId = `${ip}_${userAgent.substring(0, 40)}`
 
-  if (!visitorStore.visitors.has(uniqueVisitorId)) {
+  const isNewVisitor = !visitorStore.visitors.has(uniqueVisitorId)
+
+  if (isIncrementRequested && isNewVisitor) {
     visitorStore.visitors.add(uniqueVisitorId)
     visitorStore.count += 1
   }
 
-  // Hit external global counter for persistent weekly fallback
+  // Hit external global counter (only increment if new visitor requested, else read-only)
   try {
-    const extRes = await fetch(`https://api.counterapi.dev/v1/bimbel_bina_juara_net/week_${currentWeekKey}/up`, {
-      cache: 'no-store'
-    })
+    const extEndpoint = isIncrementRequested && isNewVisitor
+      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_unique/week_${currentWeekKey}/up`
+      : `https://api.counterapi.dev/v1/bimbel_bina_juara_unique/week_${currentWeekKey}`
+
+    const extRes = await fetch(extEndpoint, { cache: 'no-store' })
     if (extRes.ok) {
       const extData = await extRes.json()
-      if (typeof extData?.count === 'number' && extData.count > visitorStore.count) {
-        visitorStore.count = extData.count
+      if (typeof extData?.count === 'number') {
+        visitorStore.count = Math.max(visitorStore.count, extData.count)
       }
     }
   } catch {
-    // Fallback to in-memory network count
+    // Keep internal memory count
   }
 
   const finalCount = Math.max(1, visitorStore.count)
@@ -65,7 +72,7 @@ export async function GET(request: Request) {
     {
       count: finalCount,
       periodLabel: 'Minggu Ini',
-      ip
+      isNewVisitor
     },
     {
       headers: {
