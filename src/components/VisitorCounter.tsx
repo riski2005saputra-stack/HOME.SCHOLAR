@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Eye } from 'lucide-react'
 
 const MONTH_NAMES = [
@@ -9,27 +9,21 @@ const MONTH_NAMES = [
 ]
 
 export function VisitorCounter() {
-  const [count, setCount] = useState<number>(0)
+  const [count] = useState<number>(() => {
+    if (typeof window === 'undefined') return 240
 
-  const currentMonthIndex = new Date().getMonth()
-  const monthName = MONTH_NAMES[currentMonthIndex]
-
-  useEffect(() => {
     const now = new Date()
     const currentMonthKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
 
-    // Base start count for new month
     const baseCount = 240
     const storedMonth = localStorage.getItem('bj_visitor_month')
     let storedCount = parseInt(localStorage.getItem('bj_visitor_count') || '0', 10)
 
     if (storedMonth !== currentMonthKey) {
-      // Reset counter automatically when month changes
       localStorage.setItem('bj_visitor_month', currentMonthKey)
       storedCount = baseCount
       localStorage.setItem('bj_visitor_count', storedCount.toString())
     } else {
-      // Same month: increment if new session
       const sessionKey = `bj_visited_${currentMonthKey}`
       if (!sessionStorage.getItem(sessionKey)) {
         storedCount += 1
@@ -38,8 +32,11 @@ export function VisitorCounter() {
       }
     }
 
-    setCount(storedCount)
-  }, [])
+    return storedCount || baseCount
+  })
+
+  const currentMonthIndex = new Date().getMonth()
+  const monthName = MONTH_NAMES[currentMonthIndex]
 
   if (!count) return null
 
