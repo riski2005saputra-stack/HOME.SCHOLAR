@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Eye } from 'lucide-react'
 
 const MONTH_NAMES = [
@@ -8,37 +8,48 @@ const MONTH_NAMES = [
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 ]
 
+const BASE_OFFSET = 250
+
 export function VisitorCounter() {
-  const [count] = useState<number>(() => {
-    if (typeof window === 'undefined') return 240
-
-    const now = new Date()
-    const currentMonthKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
-
-    const baseCount = 240
-    const storedMonth = localStorage.getItem('bj_visitor_month')
-    let storedCount = parseInt(localStorage.getItem('bj_visitor_count') || '0', 10)
-
-    if (storedMonth !== currentMonthKey) {
-      localStorage.setItem('bj_visitor_month', currentMonthKey)
-      storedCount = baseCount
-      localStorage.setItem('bj_visitor_count', storedCount.toString())
-    } else {
-      const sessionKey = `bj_visited_${currentMonthKey}`
-      if (!sessionStorage.getItem(sessionKey)) {
-        storedCount += 1
-        sessionStorage.setItem(sessionKey, 'true')
-        localStorage.setItem('bj_visitor_count', storedCount.toString())
-      }
-    }
-
-    return storedCount || baseCount
-  })
-
+  const [count, setCount] = useState<number>(BASE_OFFSET)
   const currentMonthIndex = new Date().getMonth()
   const monthName = MONTH_NAMES[currentMonthIndex]
 
-  if (!count) return null
+  useEffect(() => {
+    let isMounted = true
+    const now = new Date()
+    const monthKey = `${now.getFullYear()}_${String(now.getMonth() + 1).padStart(2, '0')}`
+    const sessionKey = `bj_global_session_${monthKey}`
+    const isNewSession = !sessionStorage.getItem(sessionKey)
+
+    const endpoint = isNewSession
+      ? `https://api.counterapi.dev/v1/bimbel-bina-juara/visitors_${monthKey}/up`
+      : `https://api.counterapi.dev/v1/bimbel-bina-juara/visitors_${monthKey}`
+
+    fetch(endpoint)
+      .then((res) => {
+        if (!res.ok) throw new Error('API Error')
+        return res.json()
+      })
+      .then((data) => {
+        if (!isMounted) return
+        if (isNewSession) {
+          sessionStorage.setItem(sessionKey, 'true')
+        }
+        const apiCount = typeof data?.count === 'number' ? data.count : 1
+        setCount(BASE_OFFSET + apiCount)
+      })
+      .catch(() => {
+        if (!isMounted) return
+        // Fallback to local storage if API fails or offline
+        const localVal = parseInt(localStorage.getItem('bj_local_fallback') || '1', 10)
+        setCount(BASE_OFFSET + localVal)
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <div className="inline-flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3.5 py-1.5 rounded-full border border-blue-500/30 shadow-md hover:border-blue-400/60 transition-all">
@@ -51,7 +62,7 @@ export function VisitorCounter() {
         <strong className="text-amber-300 font-bold text-xs">{count}+</strong> Pengunjung Bulan {monthName}
       </span>
       <span className="text-[10px] text-gray-400 border-l border-gray-700 pl-2 hidden sm:inline whitespace-nowrap">
-        Diperbarui 1 Bulan Sekali
+        Diperbarui Real-time
       </span>
     </div>
   )
