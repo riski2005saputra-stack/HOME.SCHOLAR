@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 import { Eye } from 'lucide-react'
 
 export function VisitorCounter() {
-  const [count, setCount] = useState<number>(0)
+  const [count, setCount] = useState<number | null>(null)
 
   useEffect(() => {
     let isMounted = true
 
-    // Check device-level lock for the current week
+    // Check device-level lock for the current week reset v3
     const now = new Date()
     const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()))
     const dayNum = d.getUTCDay() || 7
@@ -18,7 +18,7 @@ export function VisitorCounter() {
     const weekNo = Math.ceil((((d.getTime() - yearStart.getTime()) / 86400000) + 1) / 7)
     const weekKey = `${d.getUTCFullYear()}_W${weekNo}`
 
-    const storageKey = `bj_visitor_counted_${weekKey}`
+    const storageKey = `bj_visitor_reset_v3_${weekKey}`
     const isAlreadyCounted = typeof window !== 'undefined' && !!localStorage.getItem(storageKey)
 
     // Send inc=1 ONLY if this device has NOT been counted this week
@@ -41,7 +41,7 @@ export function VisitorCounter() {
       })
       .catch(() => {
         if (!isMounted) return
-        setCount(1)
+        setCount(0)
       })
 
     return () => {
@@ -49,7 +49,7 @@ export function VisitorCounter() {
     }
   }, [])
 
-  if (!count) return null
+  if (count === null) return null
 
   return (
     <div className="inline-flex items-center gap-2 bg-slate-900/90 backdrop-blur-md text-white text-xs font-medium px-3.5 py-1.5 rounded-full border border-blue-500/30 shadow-md hover:border-blue-400/60 transition-all">
