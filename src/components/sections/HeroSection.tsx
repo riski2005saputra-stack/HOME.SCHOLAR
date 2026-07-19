@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FadeIn } from '@/components/FadeIn'
+import { VisitorCounter } from '@/components/VisitorCounter'
 
 const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
 
@@ -25,9 +25,12 @@ export function HeroSection() {
           {/* Left - Text */}
           <div>
             <FadeIn delay={0.1}>
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                Les Privat ke Rumah
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+                  Les Privat ke Rumah
+                </div>
+                <VisitorCounter />
               </div>
             </FadeIn>
 

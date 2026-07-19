@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { VisitorCounter } from '@/components/VisitorCounter'
 
 const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA'
 
@@ -103,10 +104,11 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center">
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-sm text-gray-500">
             &copy; 2026 BIMBEL BINA JUARA. Semua Hak Dilindungi.
           </p>
+          <VisitorCounter />
         </div>
       </div>
     </footer>
