@@ -144,6 +144,6 @@ export function Navbar({ onOpenBooking }: NavbarProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   )
 }
