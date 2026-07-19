@@ -3,18 +3,20 @@
 import { useEffect, useState } from 'react'
 import { Eye } from 'lucide-react'
 
+const MONTH_NAMES = [
+  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+]
+
 export function VisitorCounter() {
   const [count, setCount] = useState<number>(0)
-  const [monthName, setMonthName] = useState<string>('')
+
+  const currentMonthIndex = new Date().getMonth()
+  const monthName = MONTH_NAMES[currentMonthIndex]
 
   useEffect(() => {
     const now = new Date()
     const currentMonthKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
-    const monthNames = [
-      'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-      'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    ]
-    setMonthName(monthNames[now.getMonth()])
 
     // Base start count for new month
     const baseCount = 240

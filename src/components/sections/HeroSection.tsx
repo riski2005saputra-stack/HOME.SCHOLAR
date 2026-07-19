@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { FadeIn } from '@/components/FadeIn'
 import { VisitorCounter } from '@/components/VisitorCounter'
 
 const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
