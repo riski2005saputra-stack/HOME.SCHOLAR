@@ -49,11 +49,11 @@ export async function GET(request: Request) {
     visitorStore.count += 1
   }
 
-  // Fresh namespace bimbel_bina_juara_zero_v4 starting cleanly at 0
+  // Persistent counterapi.dev endpoint bimbel_bina_juara_final
   try {
     const extEndpoint = isIncrementRequested && isNewVisitor
-      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_zero_v4/week_${currentWeekKey}/up`
-      : `https://api.counterapi.dev/v1/bimbel_bina_juara_zero_v4/week_${currentWeekKey}`
+      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_final/week_${currentWeekKey}/up`
+      : `https://api.counterapi.dev/v1/bimbel_bina_juara_final/week_${currentWeekKey}`
 
     const extRes = await fetch(extEndpoint, { cache: 'no-store' })
     if (extRes.ok) {
