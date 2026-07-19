@@ -26,11 +26,7 @@ export function HeroSection() {
           {/* Left - Text */}
           <div>
             <FadeIn delay={0.1}>
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                  Les Privat ke Rumah
-                </div>
+              <div className="mb-6">
                 <VisitorCounter />
               </div>
             </FadeIn>
