@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FadeIn } from '@/components/FadeIn'
-import { VisitorCounter } from '@/components/VisitorCounter'
 
 const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
 
@@ -25,11 +24,7 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Text */}
           <div>
-            <FadeIn delay={0.1}>
-              <div className="mb-6">
-                <VisitorCounter />
-              </div>
-            </FadeIn>
+
 
             <FadeIn delay={0.2}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4">
