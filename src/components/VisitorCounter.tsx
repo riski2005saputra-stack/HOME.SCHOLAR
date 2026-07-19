@@ -8,10 +8,11 @@ const MONTH_NAMES = [
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 ]
 
-const BASE_OFFSET = 250
+// BASE_OFFSET set to 0 per user test request
+const BASE_OFFSET = 0
 
 export function VisitorCounter() {
-  const [count, setCount] = useState<number>(BASE_OFFSET)
+  const [count, setCount] = useState<number>(0)
   const currentMonthIndex = new Date().getMonth()
   const monthName = MONTH_NAMES[currentMonthIndex]
 
@@ -19,12 +20,13 @@ export function VisitorCounter() {
     let isMounted = true
     const now = new Date()
     const monthKey = `${now.getFullYear()}_${String(now.getMonth() + 1).padStart(2, '0')}`
-    const sessionKey = `bj_global_session_${monthKey}`
+    const sessionKey = `bj_live_session_${monthKey}`
     const isNewSession = !sessionStorage.getItem(sessionKey)
 
+    // Using fresh namespace bimbel_bina_juara_live so it starts cleanly from 0
     const endpoint = isNewSession
-      ? `https://api.counterapi.dev/v1/bimbel-bina-juara/visitors_${monthKey}/up`
-      : `https://api.counterapi.dev/v1/bimbel-bina-juara/visitors_${monthKey}`
+      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_live/visitors_${monthKey}/up`
+      : `https://api.counterapi.dev/v1/bimbel_bina_juara_live/visitors_${monthKey}`
 
     fetch(endpoint)
       .then((res) => {
@@ -41,9 +43,7 @@ export function VisitorCounter() {
       })
       .catch(() => {
         if (!isMounted) return
-        // Fallback to local storage if API fails or offline
-        const localVal = parseInt(localStorage.getItem('bj_local_fallback') || '1', 10)
-        setCount(BASE_OFFSET + localVal)
+        setCount(1)
       })
 
     return () => {
@@ -59,7 +59,7 @@ export function VisitorCounter() {
       </span>
       <Eye className="w-3.5 h-3.5 text-blue-400 shrink-0" />
       <span className="whitespace-nowrap">
-        <strong className="text-amber-300 font-bold text-xs">{count}+</strong> Pengunjung Bulan {monthName}
+        <strong className="text-amber-300 font-bold text-xs">{count}</strong> Pengunjung Bulan {monthName}
       </span>
       <span className="text-[10px] text-gray-400 border-l border-gray-700 pl-2 hidden sm:inline whitespace-nowrap">
         Diperbarui Real-time
