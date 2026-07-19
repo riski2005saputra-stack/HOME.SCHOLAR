@@ -27,7 +27,7 @@ export async function GET(request: Request) {
   const now = new Date()
   const currentWeekKey = getWeekKey(now)
 
-  // Reset count when a new week begins or reset requested
+  // Reset count when a new week begins
   if (visitorStore.weekKey !== currentWeekKey) {
     visitorStore.weekKey = currentWeekKey
     visitorStore.visitors = new Set<string>()
@@ -49,11 +49,11 @@ export async function GET(request: Request) {
     visitorStore.count += 1
   }
 
-  // Fresh namespace bimbel_bina_juara_reset_v3 starting cleanly at 0
+  // Fresh namespace bimbel_bina_juara_zero_v4 starting cleanly at 0
   try {
     const extEndpoint = isIncrementRequested && isNewVisitor
-      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_reset_v3/week_${currentWeekKey}/up`
-      : `https://api.counterapi.dev/v1/bimbel_bina_juara_reset_v3/week_${currentWeekKey}`
+      ? `https://api.counterapi.dev/v1/bimbel_bina_juara_zero_v4/week_${currentWeekKey}/up`
+      : `https://api.counterapi.dev/v1/bimbel_bina_juara_zero_v4/week_${currentWeekKey}`
 
     const extRes = await fetch(extEndpoint, { cache: 'no-store' })
     if (extRes.ok) {
@@ -66,11 +66,9 @@ export async function GET(request: Request) {
     // Keep internal memory count
   }
 
-  const finalCount = Math.max(0, visitorStore.count)
-
   return NextResponse.json(
     {
-      count: finalCount,
+      count: visitorStore.count,
       periodLabel: 'Minggu Ini',
       isNewVisitor
     },
