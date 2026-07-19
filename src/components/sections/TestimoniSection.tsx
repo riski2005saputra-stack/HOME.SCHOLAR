@@ -9,7 +9,7 @@ const testimoniList = [
   {
     nama: 'Ibu Ratna',
     anak: 'Siswa SD Kelas 5',
-    komentar: 'Anak saya jadi lebih semangat belajar sejak ada guru HOME SCHOLAR yang datang ke rumah. Nilainya juga naik signifikan!',
+    komentar: 'Anak saya jadi lebih semangat belajar sejak ada guru BIMBEL BINA JUARA yang datang ke rumah. Nilainya juga naik signifikan!',
     inisial: 'IR',
     color: 'bg-pink-100 text-pink-600',
   },
@@ -23,21 +23,21 @@ const testimoniList = [
   {
     nama: 'Ibu Dewi Lestari',
     anak: 'Siswa SD Kelas 3',
-    komentar: 'HOME SCHOLAR benar-benar solusi buat kami yang sibuk bekerja. Anak tetap dapat bimbingan belajar berkualitas di rumah.',
+    komentar: 'BIMBEL BINA JUARA benar-benar solusi buat kami yang sibuk bekerja. Anak tetap dapat bimbingan belajar berkualitas di rumah.',
     inisial: 'DL',
     color: 'bg-amber-100 text-amber-600',
   },
   {
     nama: 'Bapak Rizal',
     anak: 'Siswa SMP Kelas 7',
-    komentar: 'Saya sangat puas dengan layanan HOME SCHOLAR. Anak saya lebih percaya diri dan hasil ujiannya memuaskan.',
+    komentar: 'Saya sangat puas dengan layanan BIMBEL BINA JUARA. Anak saya lebih percaya diri dan hasil ujiannya memuaskan.',
     inisial: 'RZ',
     color: 'bg-green-100 text-green-600',
   },
   {
     nama: 'Ibu Siti Aminah',
     anak: 'Siswa SD Kelas 6',
-    komentar: 'Persiapan ujian anak jadi lebih terarah berkat bimbingan dari guru HOME SCHOLAR. Terima kasih banyak!',
+    komentar: 'Persiapan ujian anak jadi lebih terarah berkat bimbingan dari guru BIMBEL BINA JUARA. Terima kasih banyak!',
     inisial: 'SA',
     color: 'bg-purple-100 text-purple-600',
   },
@@ -77,7 +77,7 @@ export function TestimoniSection() {
               Apa Kata <span className="text-blue-600">Mereka</span>?
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
-              Testimoni dari para orang tua siswa yang telah merasakan layanan HOME SCHOLAR.
+              Testimoni dari para orang tua siswa yang telah merasakan layanan BIMBEL BINA JUARA.
             </p>
           </div>
         </FadeIn>

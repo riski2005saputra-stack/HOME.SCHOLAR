@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA'
 
 const quickLinks = [
   { label: 'Dashboard', href: '#dashboard' },
@@ -33,14 +33,14 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden bg-white p-0.5 shadow-xs">
                 <Image
                   src="/logo.png"
-                  alt="HOME SCHOLAR Logo"
+                  alt="BIMBEL BINA JUARA Logo"
                   width={40}
                   height={40}
                   className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-lg font-bold text-white">
-                HOME <span className="text-blue-400">SCHOLAR</span>
+                BIMBEL <span className="text-blue-400">BINA JUARA</span>
               </span>
             </a>
             <p className="text-sm text-gray-400 leading-relaxed mb-4">
@@ -91,29 +91,21 @@ export function Footer() {
                   riski2005saputra@gmail.com
                 </a>
               </li>
-              <li>Senin – Sabtu</li>
-              <li>08.00 – 20.00 WIB</li>
             </ul>
           </div>
 
-          {/* About */}
+          {/* Working Hours */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Layanan</h3>
-            <ul className="space-y-2.5 text-sm text-gray-400">
-              <li>Les Privat SD</li>
-              <li>Les Privat SMP</li>
-              <li>Persiapan Ujian</li>
-              <li>Program Intensif</li>
-              <li>Home Schooling</li>
-              <li>Pendampingan Harian</li>
-            </ul>
+            <h3 className="text-white font-semibold mb-4">Jam Operasional</h3>
+            <p className="text-sm text-gray-400 mb-1">Senin – Sabtu</p>
+            <p className="text-sm text-gray-400">08.00 – 20.00 WIB</p>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-sm text-gray-500">
-            &copy; 2026 HOME SCHOLAR. Semua Hak Dilindungi.
+            &copy; 2026 BIMBEL BINA JUARA. Semua Hak Dilindungi.
           </p>
         </div>
       </div>

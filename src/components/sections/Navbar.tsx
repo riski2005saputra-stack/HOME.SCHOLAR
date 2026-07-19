@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
 
 const navItems = [
   { label: 'Dashboard', href: '#dashboard' },
@@ -24,57 +24,53 @@ interface NavbarProps {
 }
 
 export function Navbar({ onOpenBooking }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 20)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleNavClick = (href: string) => {
-    setIsMobileOpen(false)
-    // delay scroll so mobile menu closes first before scrolling
-    setTimeout(() => {
-      const el = document.querySelector(href)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
-    }, 300)
+    setMobileMenuOpen(false)
+    const el = document.querySelector(href)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
-    <nav
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-lg shadow-md'
-          : 'bg-transparent'
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-md py-3'
+          : 'bg-white/80 backdrop-blur-xs py-4'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a
-            href="#dashboard"
-            onClick={(e) => { e.preventDefault(); handleNavClick('#dashboard') }}
-            className="flex items-center gap-2.5 group"
-          >
-            <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden bg-white p-0.5 shadow-xs border border-gray-100/60">
-              <Image
-                src="/logo.png"
-                alt="HOME SCHOLAR Logo"
-                width={44}
-                height={44}
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <span className="text-lg md:text-xl font-bold text-gray-900">
-              HOME <span className="text-blue-600">SCHOLAR</span>
-            </span>
-          </a>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand */}
+        <a
+          href="#dashboard"
+          onClick={(e) => { e.preventDefault(); handleNavClick('#dashboard') }}
+          className="flex items-center gap-2.5 group"
+        >
+          <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform overflow-hidden bg-white p-0.5 shadow-xs border border-gray-100/60">
+            <Image
+              src="/logo.png"
+              alt="BIMBEL BINA JUARA Logo"
+              width={44}
+              height={44}
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <span className="text-lg md:text-xl font-bold text-gray-900">
+            BIMBEL <span className="text-blue-600">BINA JUARA</span>
+          </span>
+        </a>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">

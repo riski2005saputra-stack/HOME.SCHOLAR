@@ -11,7 +11,7 @@ import { FadeIn } from '@/components/FadeIn'
 const faqList = [
   {
     q: 'Apakah guru datang ke rumah?',
-    a: 'Ya, guru HOME SCHOLAR akan datang langsung ke rumah Anda sesuai jadwal yang telah disepakati. Anda tidak perlu repot mengantar anak ke tempat bimbel.',
+    a: 'Ya, guru BIMBEL BINA JUARA akan datang langsung ke rumah Anda sesuai jadwal yang telah disepakati. Anda tidak perlu repot mengantar anak ke tempat bimbel.',
   },
   {
     q: 'Apakah bisa memilih jadwal?',

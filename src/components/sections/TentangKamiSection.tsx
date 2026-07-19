@@ -23,16 +23,16 @@ export function TentangKamiSection() {
                 Tentang Kami
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Tentang <span className="text-blue-600">HOME SCHOLAR</span>
+                Tentang <span className="text-blue-600">BIMBEL BINA JUARA</span>
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  HOME SCHOLAR merupakan layanan les privat ke rumah yang membantu siswa SD dan SMP
+                  BIMBEL BINA JUARA merupakan layanan les privat ke rumah yang membantu siswa SD dan SMP
                   memperoleh pengalaman belajar yang lebih nyaman, fokus, dan efektif.
                 </p>
                 <p>
                   Guru kami telah melalui proses seleksi sehingga mampu memberikan pendampingan belajar
-                  yang berkualitas. Saat ini HOME SCHOLAR melayani wilayah Pekanbaru dengan sistem
+                  yang berkualitas. Saat ini BIMBEL BINA JUARA melayani wilayah Pekanbaru dengan sistem
                   pembelajaran yang fleksibel sesuai kebutuhan siswa.
                 </p>
                 <p>

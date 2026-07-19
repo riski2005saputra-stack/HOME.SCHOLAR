@@ -3,7 +3,7 @@
 import { MapPin, Clock, Mail, Phone } from 'lucide-react'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya.'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya.'
 
 export function KontakSection() {
   return (

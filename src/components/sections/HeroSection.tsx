@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FadeIn } from '@/components/FadeIn'
 
-const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20HOME%20SCHOLAR%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
+const WHATSAPP_URL = 'https://wa.me/6282173354073?text=Halo%20Admin%20BIMBEL%20BINA%20JUARA%2C%20saya%20ingin%20bertanya%20tentang%20les%20privat.'
 
 export function HeroSection() {
   const scrollToPaket = () => {
@@ -33,8 +33,8 @@ export function HeroSection() {
 
             <FadeIn delay={0.2}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4">
-                <span className="text-gray-900">HOME</span>{' '}
-                <span className="text-blue-600">SCHOLAR</span>
+                <span className="text-gray-900">BIMBEL</span>{' '}
+                <span className="text-blue-600">BINA JUARA</span>
               </h1>
             </FadeIn>
 
@@ -90,7 +90,7 @@ export function HeroSection() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-600/15">
                   <Image
                     src="/hero-teacher.png"
-                    alt="Guru HOME SCHOLAR mengajar siswa di rumah"
+                    alt="Guru BIMBEL BINA JUARA mengajar siswa di rumah"
                     width={1344}
                     height={768}
                     className="w-full h-auto object-cover"

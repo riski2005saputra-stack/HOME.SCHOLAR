@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "HOME SCHOLAR - Les Privat ke Rumah untuk Anak SD & SMP di Pekanbaru",
+  title: "BIMBEL BINA JUARA - Les Privat ke Rumah untuk Anak SD & SMP di Pekanbaru",
   description:
     "Layanan les privat ke rumah yang membantu siswa SD dan SMP memperoleh pengalaman belajar yang lebih nyaman, fokus, dan efektif. Guru profesional yang datang langsung ke rumah Anda. Melayani wilayah Pekanbaru.",
   keywords: [
@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     "bimbel Pekanbaru",
     "les SD",
     "les SMP",
-    "HOME SCHOLAR",
+    "BIMBEL BINA JUARA",
   ],
-  authors: [{ name: "HOME SCHOLAR" }],
+  authors: [{ name: "BIMBEL BINA JUARA" }],
   icons: {
     icon: "/logo.png",
   },
   openGraph: {
-    title: "HOME SCHOLAR - Les Privat ke Rumah",
+    title: "BIMBEL BINA JUARA - Les Privat ke Rumah",
     description:
       "Belajar lebih nyaman bersama guru profesional yang datang langsung ke rumah Anda. Melayani wilayah Pekanbaru.",
     type: "website",

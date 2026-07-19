@@ -176,7 +176,7 @@ export function BookingModal({ isOpen, onClose, initialPaket = '' }: BookingModa
         })
 
     // Construct the message following the exact requested format
-    const message = `Halo Admin HOME SCHOLAR,
+    const message = `Halo Admin BIMBEL BINA JUARA,
 
 Saya ingin memesan layanan les privat.
 

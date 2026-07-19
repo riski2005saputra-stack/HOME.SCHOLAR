@@ -37,7 +37,7 @@ export function KeunggulanSection() {
         <FadeIn>
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Mengapa Memilih <span className="text-blue-600">HOME SCHOLAR</span>?
+              Mengapa Memilih <span className="text-blue-600">BIMBEL BINA JUARA</span>?
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto">
               Kami berkomitmen memberikan layanan les privat terbaik untuk putra-putri Anda.
